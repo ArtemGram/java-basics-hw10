@@ -14,9 +14,10 @@ public class ExampleExceptionTest {
   @DataProvider(name = "data")
   public static Object[][] data() {
     return new Object[][]{
-        {2, 2, 4},
-        {2, 3, 6}
-        // TODO add 2 more test data here
+            {2, 2, 4},
+            {2, 3, 6},
+            {3, 3, 9},
+            {4, 5, 20}
     };
   }
 
@@ -28,20 +29,22 @@ public class ExampleExceptionTest {
   @DataProvider(name = "negativeData")
   public static Object[][] negativeData() {
     return new Object[][]{
-        {-2, 2},
-        {2, -2}
-        // TODO add 2 more test data here
+            {-2, 2},
+            {2, -2},
+            {2, -6},
+            {-3, -5}
     };
   }
 
   @Test(dataProvider = "data")
   public void testRectangleArea(int a, int b, int c) {
-    // TODO put your code here
+    assertEquals(ExampleException.rectangleArea(a, b), c,
+            "The area is not correct");
   }
 
 
   @Test(dataProvider = "negativeData")
   public void testRectangleAreaNegative(int a, int b) {
-    // TODO put your code here
+    assert(a < 0 || b < 0) : "input value is below zero!";
   }
 }
