@@ -45,6 +45,12 @@ public class ExampleExceptionTest {
 
   @Test(dataProvider = "negativeData")
   public void testRectangleAreaNegative(int a, int b) {
-    assert(a < 0 || b < 0) : "input value is below zero!";
+    try {
+      ExampleException.rectangleArea(a,b);
+    }
+    catch (IllegalArgumentException e)
+    {
+      assertEquals(e.getMessage(),"input value is below zero!");
+    }
   }
 }
