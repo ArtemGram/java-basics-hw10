@@ -47,6 +47,7 @@ public class ExampleExceptionTest {
   public void testRectangleAreaNegative(int a, int b) {
     try {
       ExampleException.rectangleArea(a,b);
+      fail("Test fail - Error message");
     }
     catch (IllegalArgumentException e)
     {
